@@ -1,4 +1,4 @@
-package domain;
+package za.ac.cput.domain;
 
 /**
  * Transaction.java
@@ -78,8 +78,8 @@ public class Transaction {
 
         public String status;
 
-        public Builder setTransactionReport(String transactionReport_ID){
-            this.transaction_ID = transactionReport_ID;
+        public Builder setTransaction(String transaction_ID){
+            this.transaction_ID = transaction_ID;
             return this;
         }
 
