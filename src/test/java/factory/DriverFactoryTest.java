@@ -17,12 +17,12 @@ class DriverFactoryTest {
     private Driver driver2;
     private Driver driver3;
 
-    @BeforeEach
-    void setUp() {
-        driver1 = new Driver();
-        driver2 = new Driver();
-        driver3 = driver1;
-    }
+//    @BeforeEach
+//    void setUp() {
+//        driver1 = new Driver();
+//        driver2 = new Driver();
+//        driver3 = driver1;
+//    }
 
     @AfterEach
     void tearDown() {
@@ -33,7 +33,7 @@ class DriverFactoryTest {
     }
     @Test
     public void test(){
-        Driver driver = DriverFactory.createDriver("ABC0001", "Nicolau", "Sanchez", "987654321", "Toyota Etios, White, CAA 54321", "0625434565", "nicolauSanchez91@gmail.com");
+        Driver driver = DriverFactory.createDriver("Nicolau", "Sanchez", "987654321", "Toyota Etios, White, CAA 54321", "0625434565", "nicolauSanchez91@gmail.com");
         System.out.println(driver.toString());
         assertNotNull(driver);
     }
