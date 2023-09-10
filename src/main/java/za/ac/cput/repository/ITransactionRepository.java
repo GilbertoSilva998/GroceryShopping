@@ -6,10 +6,13 @@ package za.ac.cput.repository;
  * Date: 08 April 2023
  */
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.Transaction;
 
 import java.util.Set;
 
-public interface ITransactionRepository extends IRepository<Transaction, String>{
-    public Set<Transaction> getAll();
+@Repository
+public interface ITransactionRepository extends JpaRepository<Transaction, String> {
+
 }

@@ -5,6 +5,8 @@ import za.ac.cput.factory.DriverFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.service.impl.DriverService;
+
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -14,11 +16,8 @@ public class DriverController {
     @Autowired
     private DriverService driverService;
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-
     @PostMapping("/create")
     public Driver create(@RequestBody Driver driver) {
-        Driver driverCreated = DriverFactory.createDriver(driver.getDriver_ID(), driver.getFirst_Name(), driver.getLast_Name(), driver.getDriver_License_Number(), driver.getVehicle_Information(), driver.getPhone_Number(), driver.getEmail()/*"Gilberto","3e91930239","0623108129","vjvjyjv"*/);
         return driverService.create(driver);
     }
     @GetMapping("/read/{id}")
@@ -37,7 +36,7 @@ public class DriverController {
         }
 
     @GetMapping({"/getall"})
-        public Set<Driver> getall(){
+        public List<Driver> getall(){
         return driverService.getAll();
     }
 

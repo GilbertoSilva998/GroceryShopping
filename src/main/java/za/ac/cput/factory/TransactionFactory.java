@@ -10,11 +10,12 @@ import za.ac.cput.domain.Transaction;
 import za.ac.cput.util.Helper;
 
 public class TransactionFactory {
-    public static Transaction createTransaction(String transaction_ID, String transaction_Type, String date_Of_Transaction, double amount, String currency, String status){
+    public static Transaction createTransaction (String transaction_Type, String date_Of_Transaction, String amount, String currency, String status){
         if (Helper.isNullorEmpty(transaction_Type) || Helper.isNullorEmpty(status))
             return null;
         ;
-        String transactionReport_Num = Helper.generateId();
+        String transaction_ID = Helper.generateId();
+
         Transaction transaction = new Transaction.Builder().setTransaction(transaction_ID)
                 .setTransaction_Type(transaction_Type)
                 .setDate_Of_Transaction(date_Of_Transaction)

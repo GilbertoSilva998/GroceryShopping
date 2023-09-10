@@ -6,17 +6,13 @@ package za.ac.cput.repository;
  * Date: 08 April 2023
  */
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.Driver;
 
 import java.util.Set;
 
-public interface IDriverRepository extends IRepository <Driver, String>{
-    public Set<Driver> getAll();
-    //private Set<Driver> driverDB;
-
-    /*public  DriverRepository (){
-        driverDB = new HashSet<Driver>();
-
-    } */
+@Repository
+public interface IDriverRepository extends JpaRepository<Driver, String> {
 
 }

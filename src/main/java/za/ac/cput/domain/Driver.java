@@ -14,6 +14,7 @@ import java.util.Objects;
 
 @Entity
 public class Driver implements Serializable {
+    @Id
     private String driver_ID;
     private String first_Name;
     private String last_Name;
@@ -22,12 +23,10 @@ public class Driver implements Serializable {
     private String phone_Number;
     private String email;
 
-    @Id
-    private Long id;
 
 
     //-----------Constructors--------------
-    public Driver() {}
+    protected Driver() {}
 
     //---------------Builder----------------
     private Driver(Builder builder){
@@ -57,7 +56,6 @@ public class Driver implements Serializable {
         return email;
     }
 
-    public Long getId() {return id;}
 
     //------------Has Code -------------------
 
@@ -66,21 +64,14 @@ public class Driver implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Driver driver)) return false;
-        return Objects.equals(getDriver_ID(), driver.getDriver_ID()) && Objects.equals(getFirst_Name(), driver.getFirst_Name()) && Objects.equals(getLast_Name(), driver.getLast_Name()) && Objects.equals(getDriver_License_Number(), driver.getDriver_License_Number()) && Objects.equals(getVehicle_Information(), driver.getVehicle_Information()) && Objects.equals(getPhone_Number(), driver.getPhone_Number()) && Objects.equals(getEmail(), driver.getEmail()) && Objects.equals(getId(), driver.getId());
+        return Objects.equals(getDriver_ID(), driver.getDriver_ID()) && Objects.equals(getFirst_Name(), driver.getFirst_Name()) && Objects.equals(getLast_Name(), driver.getLast_Name()) && Objects.equals(getDriver_License_Number(), driver.getDriver_License_Number()) && Objects.equals(getVehicle_Information(), driver.getVehicle_Information()) && Objects.equals(getPhone_Number(), driver.getPhone_Number()) && Objects.equals(getEmail(), driver.getEmail());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getDriver_ID(), getFirst_Name(), getLast_Name(), getDriver_License_Number(), getVehicle_Information(), getPhone_Number(), getEmail(), getId());
+        return Objects.hash(getDriver_ID(), getFirst_Name(), getLast_Name(), getDriver_License_Number(), getVehicle_Information(), getPhone_Number(), getEmail());
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /*public Long getId() {
-        return id;
-    }*/
 
     //------------To String ------------------
     @Override

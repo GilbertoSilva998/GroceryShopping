@@ -1,53 +1,55 @@
 package za.ac.cput.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import za.ac.cput.domain.Driver;
 import org.springframework.stereotype.Service;
-import za.ac.cput.repository.DriverRepository;
+import za.ac.cput.repository.IDriverRepository;
 import za.ac.cput.service.IDriverService;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
 public class DriverService implements IDriverService {
 
-    private static DriverService driverService = null;
+    private IDriverRepository driverRepository;
 
-    private static DriverRepository driverRepository = null;
-
-    private DriverService(){driverRepository = DriverRepository.getRepository();}
-
-    public static DriverService getDriverService(){
-        if (driverService == null) {
-            driverService = new DriverService();
-        }
-        return driverService;
+    @Autowired
+    private DriverService(IDriverRepository driverRepository){
+        this.driverRepository = driverRepository;
     }
+
+
     @Override
     public Driver create(Driver driver) {
-        Driver created = driverRepository.create(driver);
-        return created;
+        return this.driverRepository.save(driver);
     }
 
     @Override
     public Driver read(String driver_ID) {
-        Driver readed = driverRepository.read(driver_ID);
-        return readed;
+        return this.driverRepository.findById(driver_ID).orElse(null);
     }
 
     @Override
     public Driver update(Driver driver) {
-        Driver updated = driverRepository.update(driver);
+        if (this.driverRepository.existsById(driver.getDriver_ID())) {
+            return this.driverRepository.save(driver);
+
+        }
         return null;
     }
 
     @Override
     public boolean delete(String driver_ID) {
-        boolean deleted = driverRepository.delete(driver_ID);
-        return deleted;
+        if (this.driverRepository.existsById(driver_ID)) {
+            this.driverRepository.deleteById(driver_ID);
+            return true;
+        }
+        return false;
     }
 
     @Override
-    public Set<Driver> getAll() {
-        return null;
+    public List<Driver> getAll() {
+        return this.driverRepository.findAll();
     }
 }

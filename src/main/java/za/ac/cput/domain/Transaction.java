@@ -1,22 +1,32 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+import java.io.Serializable;
+import java.util.Objects;
+
 /**
  * Transaction.java
  * @author: Gilberto Silva (218239300)
  * Date: 07 April 2023
  */
-public class Transaction {
-    public String transaction_ID;
-    public String transaction_Type;
 
-    public String date_Of_Transaction;
-    public double amount;
-    public String currency;
+@Entity
+public class Transaction implements Serializable {
 
-    public String status;
+    @Id
+    private String transaction_ID;
+    private String transaction_Type;
+
+    private String date_Of_Transaction;
+    private String amount;
+    private String currency;
+    private String status;
+
 
     //-------------Constructor----------------------
-    public Transaction() {}
+    protected Transaction() {}
 
     //---------------Builder----------------
     private Transaction(Builder builder){
@@ -25,6 +35,7 @@ public class Transaction {
         this.date_Of_Transaction = builder.date_Of_Transaction;
         this.amount = builder.amount;
         this.currency = builder.currency;
+        this.status = builder.status;
     }
 
     //--------------Getters----------------------
@@ -34,25 +45,27 @@ public class Transaction {
 
     public String getDate_Of_Transaction() {return date_Of_Transaction;}
 
-    public double getAmount() {return amount;}
+    public String getAmount() {return amount;}
 
     public String getCurrency() {return currency;}
 
 
     public String getStatus() {return status;}
 
-    //------------------Setters-------------------------
-    public void setTransaction_ID(String transaction_ID) {this.transaction_ID = transaction_ID;}
+    //------------------Has Code -------------
 
-    public void setTransaction_Type(String transaction_Type) {this.transaction_Type = transaction_Type;}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Transaction that)) return false;
+        return Objects.equals(getTransaction_ID(), that.getTransaction_ID()) && Objects.equals(getTransaction_Type(), that.getTransaction_Type()) && Objects.equals(getDate_Of_Transaction(), that.getDate_Of_Transaction()) && Objects.equals(getAmount(), that.getAmount()) && Objects.equals(getCurrency(), that.getCurrency()) && Objects.equals(getStatus(), that.getStatus());
+    }
 
-    public void setDate_Of_Transaction(String date_Of_Transaction) {this.date_Of_Transaction = date_Of_Transaction;}
+    @Override
+    public int hashCode() {
+        return Objects.hash(getTransaction_ID(), getTransaction_Type(), getDate_Of_Transaction(), getAmount(), getCurrency(), getStatus());
+    }
 
-    public void setAmount(double amount) {this.amount = amount;}
-
-    public void setCurrency(String currency) {this.currency = currency;}
-
-    public void setStatus(String status) {this.status = status;}
 
     //------------------To String-------------
 
@@ -67,13 +80,15 @@ public class Transaction {
                 ", status='" + status + '\'' +
                 '}';
     }
+
+
     //---------------Builder---------------------------
     public static class Builder{
         public String transaction_ID;
         public String transaction_Type;
 
         public String date_Of_Transaction;
-        public double amount;
+        public String amount;
         public String currency;
 
         public String status;
@@ -95,8 +110,7 @@ public class Transaction {
             return this;
         }
 
-
-        public Builder setAmount(double amount){
+        public Builder setAmount(String amount){
 
             this.amount = amount;
             return this;
