@@ -7,11 +7,11 @@
 package za.ac.cput.repository;
 
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.Category;
-import za.ac.cput.domain.Customer;
 
-import java.util.Set;
+@Repository
+public interface ICategoryRepository extends JpaRepository<Category, String> {
 
-public interface ICategoryRepository extends IRepository<Category, String>{
-    public Set<Category> getAll();
 }
