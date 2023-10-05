@@ -2,15 +2,16 @@ package za.ac.cput.service.impl;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Store;
 import za.ac.cput.repository.IStoreRepository;
 import za.ac.cput.service.IStoreService;
 
 import java.util.Set;
-
+@Service
 public class StoreService implements IStoreService {
 
-    private static IStoreRepository repository;
+    private IStoreRepository repository;
 
     @Autowired
     private StoreService(IStoreRepository repository){

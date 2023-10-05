@@ -1,6 +1,6 @@
 package factory;
 
-import za.ac.cput.domain.Order;
+import za.ac.cput.domain.Orders;
 import za.ac.cput.factory.OrderFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -13,18 +13,18 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OrderFactoryTest {
-    private Order order1;
-    private Order order2;
-    private Order order3;
+    private Orders order1;
+    private Orders order2;
+    private Orders order3;
     @BeforeEach
     void setUp() {
-        order1 = new Order();
-        order2 = new Order();
+        order1 = new Orders();
+        order2 = new Orders();
         order3 = order1;
     }
     @Test
     public void test(){
-        Order order = OrderFactory.createOrder("12", "written order", "Order sent by the buyer to the seller" );
+        Orders order = OrderFactory.createOrder("12", "written order", "Order sent by the buyer to the seller" );
         System.out.println(order.toString());
         assertNotNull(order);
     }

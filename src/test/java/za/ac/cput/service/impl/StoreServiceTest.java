@@ -17,12 +17,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class StoreServiceTest {
 
     @Autowired
-    private static StoreService service;
-    private static Store store = StoreFactory.createStore("Shoprite", "Woodstock", "Retail Store");
+    private StoreService service;
+    private static final Store store = StoreFactory.createStore("Shoprite", "Woodstock", "Retail Store");
 
     @Test
     void a_create() {
         Store created = service.create(store);
+        assert store != null;
         assertEquals(store.getStoreId(), created.getStoreId());
         System.out.println( "Created: " + created);
     }
@@ -31,6 +32,7 @@ class StoreServiceTest {
     void b_read() {
 
         Store read = service.read(store.getStoreId());
+        assert store != null;
         assertNotNull(read);
         System.out.println( "Created: " + read);
 

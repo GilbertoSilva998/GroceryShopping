@@ -7,17 +7,17 @@
 
 package za.ac.cput.factory;
 
-import za.ac.cput.domain.Order;
+import za.ac.cput.domain.Orders;
 import za.ac.cput.util.Helper;
 
 public class OrderFactory {
 
-    public static Order createOrder(String orderNumber, String orderType, String orderDescription) {
+    public static Orders createOrder(String orderNumber, String orderType, String orderDescription) {
 
         if (Helper.isNullorEmpty(orderNumber) || Helper.isNullorEmpty(orderType) || Helper.isNullorEmpty(orderDescription))
             return null;
         String orderId = Helper.generateId();
-        Order order = new Order.Builder().setOrderId(orderId)
+        Orders order = new Orders.Builder().setOrderId(orderId)
                 .setOrderNumber(orderNumber)
                 .setOrderType(orderType)
                 .setOrderDescription(orderDescription)
@@ -25,7 +25,7 @@ public class OrderFactory {
         return order;
     }
 
-    public static Order createOrder(Order order) {
+    public static Orders createOrder(Orders order) {
         return order;
     }
 }
