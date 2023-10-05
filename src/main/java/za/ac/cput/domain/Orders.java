@@ -1,5 +1,5 @@
 /**
- * Order.java
+ * Orders.java
  * This is a POJO class for Order entity
  *
  * @author Anathi Mhlom 220006695
@@ -15,18 +15,18 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Order implements Serializable {
+public class Orders implements Serializable {
     @Id
     private String orderId;
     private String orderNumber;
     private String orderType;
     private String orderDescription;
 
-    public Order() {
+    public Orders () {
 
     }
 
-    public Order(Builder builder) {
+    public Orders (Builder builder) {
         this.orderId = builder.orderId;
         this.orderNumber = builder.orderNumber;
         this.orderType = builder.orderType;
@@ -69,7 +69,7 @@ public class Order implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Order order = (Order) o;
+        Orders order = (Orders) o;
         return Objects.equals(orderId, order.orderId) && Objects.equals(orderNumber, order.orderNumber) && Objects.equals(orderType, order.orderType) && Objects.equals(orderDescription, order.orderDescription);
     }
 
@@ -114,7 +114,7 @@ public class Order implements Serializable {
             return this;
         }
 
-        public Builder builder(Order order) {
+        public Builder builder(Orders order) {
             this.orderId = order.orderId;
             this.orderNumber = order.orderNumber;
             this.orderType = order.orderType;
@@ -122,8 +122,8 @@ public class Order implements Serializable {
             return this;
         }
 
-        public Order build() {
-            return new Order(this);
+        public Orders build() {
+            return new Orders(this);
         }
     }
 }
