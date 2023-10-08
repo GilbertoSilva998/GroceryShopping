@@ -5,6 +5,7 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
@@ -19,9 +20,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootApplication
 class StoreControllerTest {
 
-    private final Store store = StoreFactory.createStore("Woolworths", "Cape Town CBD", "Always with you");
+    private static final Store store = StoreFactory.createStore("Woolworths", "Cape Town CBD", "Always with you");
     @Autowired
     private TestRestTemplate testRestTemplate;
     private final String baseURL = "http://localhost:8080/store";
@@ -44,6 +46,7 @@ class StoreControllerTest {
         String url = baseURL + "/read/" + store.getStoreId();
         ResponseEntity<Store> responseEntity = testRestTemplate.getForEntity(url, Store.class);
         assertEquals(store.getStoreId(), responseEntity.getBody().getStoreId());
+
         System.out.println(responseEntity.getBody());
     }
 
