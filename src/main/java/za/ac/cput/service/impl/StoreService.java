@@ -8,10 +8,12 @@ import za.ac.cput.repository.IStoreRepository;
 import za.ac.cput.service.IStoreService;
 
 import java.util.Set;
+
 @Service
 public class StoreService implements IStoreService {
 
-    private IStoreRepository repository;
+
+    private static IStoreRepository repository;
 
     @Autowired
     private StoreService(IStoreRepository repository){

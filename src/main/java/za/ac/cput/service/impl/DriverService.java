@@ -7,12 +7,11 @@ import za.ac.cput.repository.IDriverRepository;
 import za.ac.cput.service.IDriverService;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class DriverService implements IDriverService {
 
-    private IDriverRepository driverRepository;
+    private final IDriverRepository driverRepository;
 
     @Autowired
     private DriverService(IDriverRepository driverRepository){

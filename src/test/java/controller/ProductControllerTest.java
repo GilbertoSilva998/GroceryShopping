@@ -12,6 +12,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import za.ac.cput.MyApplication;
 import za.ac.cput.domain.Product;
 import za.ac.cput.factory.ProductFactory;
 
@@ -19,10 +20,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = MyApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ProductControllerTest {
 
     private final Product product = ProductFactory.createProduct(20, "Bakery","Bread", "Albany");
+
     @Autowired
     private TestRestTemplate testRestTemplate;
     private final String baseURL = "http://localhost:8080/product";
