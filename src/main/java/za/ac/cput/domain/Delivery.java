@@ -20,7 +20,7 @@ public class Delivery implements Serializable {
     @Id
     private String deliveryId;
     private String deliveryAddress;
-    private Date deliveryDate;
+    private String deliveryDate;
     private String deliveredBy;
     private String deliveryDescription;
     private String deliveryType;
@@ -54,11 +54,11 @@ public class Delivery implements Serializable {
         this.deliveryAddress = deliveryAddress;
     }
 
-    public Date getDeliveryDate() {
+    public String getDeliveryDate() {
         return deliveryDate;
     }
 
-    public void setDeliveryDate(Date deliveryDate) {
+    public void setDeliveryDate(String deliveryDate) {
         this.deliveryDate = deliveryDate;
     }
 
@@ -114,7 +114,7 @@ public class Delivery implements Serializable {
     public static class Builder {
         private String deliveryId;
         private String deliveryAddress;
-        private Date deliveryDate;
+        private String deliveryDate;
         private String deliveredBy;
         private String deliveryDescription;
         private String deliveryType;
@@ -129,7 +129,7 @@ public class Delivery implements Serializable {
             return this;
         }
 
-        public Builder setDeliveryDate(Date deliveryDate) {
+        public Builder setDeliveryDate(String deliveryDate) {
             this.deliveryDate = deliveryDate;
             return this;
         }

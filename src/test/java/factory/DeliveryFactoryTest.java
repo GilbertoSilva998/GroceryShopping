@@ -26,7 +26,7 @@ class DeliveryFactoryTest {
     Date deliveryDate = new Date();
     @Test
     public void test(){
-        Delivery delivery = DeliveryFactory.createDelivery("Salt River", deliveryDate, "Mike Stores", "Deliver to Salt River","Same day delivery" );
+        Delivery delivery = DeliveryFactory.createDelivery("Salt River", "12/12/2022", "Mike Stores", "Deliver to Salt River","Same day delivery" );
         System.out.println(delivery.toString());
         assertNotNull(delivery);
     }

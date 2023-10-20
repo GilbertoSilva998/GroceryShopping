@@ -14,7 +14,7 @@ import java.util.Date;
 
 public class DeliveryFactory {
 
-    public static Delivery createDelivery(String deliveryAddress, Date deliveryDate, String deliveredBy, String deliveryDescription, String deliveryType) {
+    public static Delivery createDelivery(String deliveryAddress, String deliveryDate, String deliveredBy, String deliveryDescription, String deliveryType) {
 
         if (Helper.isNullorEmpty(deliveryAddress) || Helper.isNullorEmpty(String.valueOf(deliveryDate)) || Helper.isNullorEmpty(deliveredBy) || Helper.isNullorEmpty(deliveryDescription) || Helper.isNullorEmpty(deliveryType))
             return null;

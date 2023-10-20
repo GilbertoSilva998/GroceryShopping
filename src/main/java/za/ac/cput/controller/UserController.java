@@ -20,32 +20,33 @@ public class UserController {
 
     @PostMapping("/user")
     User newUser (@RequestBody User newUser){
+
         return userRepository.save(newUser);
     }
 
-    //@PostMapping("/create")
-//    public User create(@RequestBody User user) {
-//        User newUser = UserFactory.createUser("Khaya", "20 Smith Avenue, Cape Town, 8001", "khaya@gmail.com", "0123456789");
-//        return userService.create(newUser);
-//    }
+    @PostMapping("/create")
+    public User create(@RequestBody User user) {
+        User newUser = UserFactory.createUser(user.getUserName(), user.getUserAddress(), user.getUserEmail(), user.getUserPhone());
+        return userService.create(newUser);
+    }
 
-//    @GetMapping("/read/{userId}")
-//    public User read(@PathVariable String userId) {
-//        return userService.read(userId);
-//    }
-//
-//    @PostMapping("/update")
-//    public User update(@RequestBody User user) {
-//        return userService.update(user);
-//    }
-//
-//    @DeleteMapping("/delete/{userId}")
-//    public boolean delete(@PathVariable String userId) {
-//        return userService.delete(userId);
-//    }
-//
-//    @GetMapping("/getAll")
-//    public List<User> getAll() {
-//        return userService.getAll();
-//    }
+    @GetMapping("/read/{userId}")
+    public User read(@PathVariable String userId) {
+        return userService.read(userId);
+    }
+
+    @PostMapping("/update")
+    public User update(@RequestBody User user) {
+        return userService.update(user);
+    }
+
+    @DeleteMapping("/delete/{userId}")
+    public boolean delete(@PathVariable String userId) {
+        return userService.delete(userId);
+    }
+
+    @GetMapping("/getAll")
+    public List<User> getAll() {
+        return userService.getAll();
+    }
 }

@@ -11,6 +11,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/admin")
+//@CrossOrigin("http://localhost:3000")
 public class AdminController {
     @Autowired
     private AdminService adminService;

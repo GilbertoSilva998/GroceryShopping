@@ -19,9 +19,9 @@ class DriverServiceTest {
     @Autowired
     private DriverService service;
 
-    private static Driver driver = DriverFactory.createDriver("Matheus",
-            "Kraig","34114","Toyota Etios",
-            "0747823872","mKrag@gmail.com");
+    private static Driver driver = DriverFactory.createDriver("Rick",
+            "Ferdinand","11111","Benz",
+            "0747823872","ri@gmail.com");
     @Test
     void a_create() {
         Driver created = service.create(driver);
@@ -38,7 +38,7 @@ class DriverServiceTest {
 
     @Test
     void c_update() {
-        Driver newDriver = new Driver.Builder().copy(driver).setFirst_Name("Danny").build();
+        Driver newDriver = new Driver.Builder().copy(driver).setFirst_Name("Ricardo").build();
         Driver updated = service.update(newDriver);
         assertEquals(newDriver.getFirst_Name(), updated.getFirst_Name());
         System.out.println("Updated: " + updated);

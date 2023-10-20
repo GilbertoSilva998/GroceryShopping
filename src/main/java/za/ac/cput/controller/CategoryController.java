@@ -8,6 +8,7 @@ import za.ac.cput.service.impl.CategoryService;
 import java.util.List;
 @RestController
 @RequestMapping("/category")
+//@CrossOrigin("http://localhost:3000")
 public class CategoryController {
     @Autowired
     private CategoryService categoryservice;
