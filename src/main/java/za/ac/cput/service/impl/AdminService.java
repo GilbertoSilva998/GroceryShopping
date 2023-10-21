@@ -7,7 +7,6 @@ import za.ac.cput.repository.IAdminRepository;
 import za.ac.cput.service.IAdminService;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class AdminService implements IAdminService {

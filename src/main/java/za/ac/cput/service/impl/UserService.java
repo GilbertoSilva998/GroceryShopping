@@ -7,7 +7,6 @@ import za.ac.cput.repository.IUserRepository;
 import za.ac.cput.service.IUserService;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class UserService implements IUserService {

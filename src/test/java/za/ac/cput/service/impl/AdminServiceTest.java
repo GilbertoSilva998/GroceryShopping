@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.Admin;
 import za.ac.cput.factory.AdminFactory;
-import za.ac.cput.repository.IAdminRepository;
-import za.ac.cput.service.impl.AdminService;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,4 +1,4 @@
-package controller;
+package za.ac.cput.controller.test;
 
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
@@ -23,7 +23,7 @@ class UserControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    private final String baseURL = "https://localhost:8080/user";
+    private final String baseURL = "http://localhost:8080/user";
 
     @Test
     void a_create() {
