@@ -3,11 +3,9 @@ package za.ac.cput.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.Admin;
-import za.ac.cput.factory.AdminFactory;
 import za.ac.cput.service.impl.AdminService;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/admin")
@@ -18,8 +16,7 @@ public class AdminController {
 
     @PostMapping("/create")
     public Admin create(@RequestBody Admin admin) {
-        Admin newAdmin = AdminFactory.createAdmin("Lilly", "Lilly1234", "lilly@gmail.com", "0123456789");
-        return adminService.create(newAdmin);
+        return adminService.create(admin);
     }
 
     @GetMapping("/read/{adminId}")

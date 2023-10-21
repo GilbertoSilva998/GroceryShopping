@@ -1,4 +1,4 @@
-package controller;
+package za.ac.cput.controller.test;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
@@ -24,7 +24,7 @@ class AdminControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    private final String baseURL = "https://localhost:8080/admin";
+    private final String baseURL = "http://localhost:8080/admin";
 
     @Test
     void a_create() {
