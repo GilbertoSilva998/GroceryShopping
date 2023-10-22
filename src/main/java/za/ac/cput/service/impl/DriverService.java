@@ -7,6 +7,7 @@ import za.ac.cput.repository.IDriverRepository;
 import za.ac.cput.service.IDriverService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class DriverService implements IDriverService {
@@ -49,6 +50,6 @@ public class DriverService implements IDriverService {
 
     @Override
     public List<Driver> getAll() {
-        return this.driverRepository.findAll();
+        return this.driverRepository.findAll().stream().collect(Collectors.toList());
     }
 }
