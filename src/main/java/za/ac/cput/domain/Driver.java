@@ -56,6 +56,33 @@ public class Driver implements Serializable {
         return email;
     }
 
+    public void setDriver_ID(String driver_ID) {
+        this.driver_ID = driver_ID;
+    }
+
+    public void setFirst_Name(String first_Name) {
+        this.first_Name = first_Name;
+    }
+
+    public void setLast_Name(String last_Name) {
+        this.last_Name = last_Name;
+    }
+
+    public void setDriver_License_Number(String driver_License_Number) {
+        this.driver_License_Number = driver_License_Number;
+    }
+
+    public void setVehicle_Information(String vehicle_Information) {
+        this.vehicle_Information = vehicle_Information;
+    }
+
+    public void setPhone_Number(String phone_Number) {
+        this.phone_Number = phone_Number;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     //------------Has Code -------------------
 

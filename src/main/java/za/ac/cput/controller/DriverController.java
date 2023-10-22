@@ -1,15 +1,10 @@
 package za.ac.cput.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.Driver;
-//import za.ac.cput.service.DriverService;
-import za.ac.cput.domain.User;
-import za.ac.cput.factory.DriverFactory;
+import za.ac.cput.exception.DriverNotFoundException;
 import za.ac.cput.repository.IDriverRepository;
-import za.ac.cput.service.impl.DriverService;
 
 import java.util.List;
 
@@ -21,15 +16,46 @@ public class DriverController {
     @Autowired
     private IDriverRepository driverRepository;
 
-    @Autowired
-    private DriverService driverService;
     @PostMapping("/driver")
-    Driver newDeriver (@RequestBody Driver newDeriver){
-
-        return driverRepository.save(newDeriver);
+    Driver newDriver(@RequestBody Driver newDriver){
+        return driverRepository.save(newDriver);
     }
 
-//    @PostMapping("/create")
+    @GetMapping("/drivers")
+    List<Driver> getAllDrivers(){
+        return driverRepository.findAll();
+    }
+
+    @GetMapping("/driver/{id}")
+    Driver getDriverById(@PathVariable Long id){
+        return driverRepository.findById(String.valueOf(id))
+                .orElseThrow(()->new DriverNotFoundException(id));
+    }
+
+    @PutMapping("/driver/{id}")
+    Driver updateDriver(@RequestBody Driver newDriver, @PathVariable Long id){
+        return driverRepository.findById(String.valueOf(id))
+                .map(driver -> {
+                    driver.setFirst_Name(newDriver.getFirst_Name());
+                    driver.setLast_Name(newDriver.getLast_Name());
+                    driver.setEmail(newDriver.getEmail());
+                    driver.setPhone_Number(newDriver.getPhone_Number());
+                    driver.setDriver_License_Number(newDriver.getDriver_License_Number());
+                    driver.setVehicle_Information(newDriver.getVehicle_Information());
+                    return driverRepository.save(driver);
+                }).orElseThrow(()->new DriverNotFoundException(id));
+    }
+
+    @DeleteMapping("/driver/{id}")
+    String deleteDriver(@PathVariable Long id){
+        if (!driverRepository.existsById(String.valueOf(id))){
+            throw new DriverNotFoundException(id);
+        }
+        driverRepository.deleteById(String.valueOf(id));
+        return "Driver with id " +id+ " has been deleted successfully.";
+    }
+
+/**    @PostMapping("/create")
 //    public ResponseEntity<Driver> create(@RequestBody Driver driver) {
 //        try {
 //            Driver createdDriver = driverService.create(driver);
@@ -116,5 +142,5 @@ public class DriverController {
 //        } catch (Exception e) {
 //            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 //        }
-//    }
+//    } */
 }

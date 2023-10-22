@@ -52,6 +52,30 @@ public class Transaction implements Serializable {
 
     public String getStatus() {return status;}
 
+    public void setTransaction_ID(String transaction_ID) {
+        this.transaction_ID = transaction_ID;
+    }
+
+    public void setTransaction_Type(String transaction_Type) {
+        this.transaction_Type = transaction_Type;
+    }
+
+    public void setDate_Of_Transaction(String date_Of_Transaction) {
+        this.date_Of_Transaction = date_Of_Transaction;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     //------------------Has Code -------------
 
     @Override

@@ -56,6 +56,26 @@ public class Product implements Serializable {
         return productDescription;
     }
 
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+    public void setProductNum(int productNum) {
+        this.productNum = productNum;
+    }
+
+    public void setProductType(String productType) {
+        this.productType = productType;
+    }
+
+    public void setProductItem(String productItem) {
+        this.productItem = productItem;
+    }
+
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
